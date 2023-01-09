@@ -79,7 +79,9 @@ object Dependencies
     val commonsLang3 = "org.apache.commons" % "commons-lang3" % Versions.CommonsLang3
     val paranamer = "com.thoughtworks.paranamer" % "paranamer" % Versions.Paranamer
 
-    val dependencies = Seq(driverCore, driverMapper, commonsLang3, paranamer)
+    val scalaCompat = "org.scala-lang.modules" %% "scala-collection-compat" % Versions.ScalaCompat
+
+    val dependencies = Seq(driverCore, driverMapper, commonsLang3, paranamer, scalaCompat)
   }
 
   object TestDriver {
