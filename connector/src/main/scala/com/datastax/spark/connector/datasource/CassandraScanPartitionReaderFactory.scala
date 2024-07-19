@@ -63,7 +63,7 @@ abstract class CassandraPartitionReaderBase
   protected val rowIterator = getIterator()
   protected var lastRow: InternalRow = InternalRow()
 
-  protected val metricsUpdater = InputMetricsUpdater(TaskContext.get(), readConf)
+  protected lazy val metricsUpdater = InputMetricsUpdater(TaskContext.get(), readConf)
 
   override def next(): Boolean = {
     if (rowIterator.hasNext) {
