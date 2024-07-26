@@ -64,7 +64,7 @@ abstract class CassandraBaseInJoinReader(
   protected val maybeRateLimit = JoinHelper.maybeRateLimit(readConf)
   protected val requestsPerSecondRateLimiter = JoinHelper.requestsPerSecondRateLimiter(readConf)
 
-  protected lazy val metricsUpdater = InputMetricsUpdater(TaskContext.get(), readConf)
+  protected val metricsUpdater = InputMetricsUpdater(TaskContext.get(), readConf)
   protected def pairWithRight(left: CassandraRow): SettableFuture[Iterator[(CassandraRow, InternalRow)]] = {
     val resultFuture = SettableFuture.create[Iterator[(CassandraRow, InternalRow)]]
     val leftSide = Iterator.continually(left)

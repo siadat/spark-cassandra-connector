@@ -38,7 +38,7 @@ case class CassandraDriverDataWriter(
 
   private val columns = SomeColumns(inputSchema.fieldNames.map(name => ColumnName(name)): _*)
 
-  private lazy val metricsUpdater = OutputMetricsUpdater(TaskContext.get(), writeConf)
+  private val metricsUpdater = OutputMetricsUpdater(TaskContext.get(), writeConf)
 
   private val asycWriter =
     TableWriter(connector, tableDef, columns, writeConf, false)(unsafeRowWriterFactory)
