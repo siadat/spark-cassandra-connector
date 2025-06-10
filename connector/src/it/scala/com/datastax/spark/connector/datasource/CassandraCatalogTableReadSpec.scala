@@ -82,10 +82,10 @@ class CassandraCatalogTableReadSpec extends CassandraCatalogSpecBase {
       .queryExecution
       .executedPlan
       .collectFirst {
-	case batchScanExec: BatchScanExec=> batchScanExec.readerFactory
-	case adaptiveSparkPlanExec: AdaptiveSparkPlanExec => adaptiveSparkPlanExec.executedPlan.collectLeaves().collectFirst{
-	  case batchScanExec: BatchScanExec=> batchScanExec.readerFactory
-	}.get
+        case batchScanExec: BatchScanExec=> batchScanExec.readerFactory
+        case adaptiveSparkPlanExec: AdaptiveSparkPlanExec => adaptiveSparkPlanExec.executedPlan.collectLeaves().collectFirst{
+          case batchScanExec: BatchScanExec=> batchScanExec.readerFactory
+        }.get
       }
 
     factory.get.asInstanceOf[CassandraScanPartitionReaderFactory].isCountQuery should be (true)
